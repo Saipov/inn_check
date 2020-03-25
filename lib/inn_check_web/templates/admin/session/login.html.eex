@@ -1,0 +1,31 @@
+
+                    <%= if get_flash(@conn, :error) do %>
+                    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+                    <% end %>
+<div class="container">
+<div class="row">
+<div class="column column-50 column-offset-25">
+                    <%= form_for @conn, Routes.admin_session_path(@conn, :new), [as: :session, id: "session-form",
+                    class: "card"], fn f -> %>
+
+
+
+                        <div class="form-group">
+                            <label class="form-label">Логин</label>
+                            <%= text_input f, :name, placeholder: "Введите логин", class:
+                            "form-control" %>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Пароль</label>
+                            <%= password_input f, :password, placeholder: "Пароль", class: "form-control" %>
+                        </div>
+
+                        <div class="form-footer">
+                            <%= submit "Войти", class: "btn btn-primary-sp btn-block" %>
+                        </div>
+
+                    <% end %>
+</div>
+</div>
+</div>

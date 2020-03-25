@@ -1,0 +1,35 @@
+<script>window.userToken = "<%= @token %>";</script>
+<h2>Введите ИНН</h2>
+<%= form_for @inn_changeset, Routes.client_inn_path(@conn, :create, @client), [id: "send_inn"], fn f -> %>
+<div class="row">
+  <div class="column column-80">
+    <%= text_input f, :number %>
+    <%= error_tag f, :number %>
+    <div id="error" style="color:red"></div>
+  </div>
+  <div class="column">
+    <%= submit "Отправить", id: "send_data" %>
+  </div>
+</div>
+<% end %>
+
+
+<table id="data_table">
+  <tbody>
+  <%= if @client do %>
+  <%= for inn <- @client.inn do %>
+    <tr>
+      <td><%= inn.inserted_at %></td>
+      <td><%= inn.number %></td>
+      <td><%= if inn.is_valid, do: "корректен", else: "некорректен" %></td>
+    </tr>
+  <% end %>
+  <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+

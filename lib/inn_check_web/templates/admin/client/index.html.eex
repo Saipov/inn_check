@@ -1,0 +1,33 @@
+<h1>Listing Clients</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ip address</th>
+      <th>Is banned</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for client <- @clients do %>
+    <%# <%= for inn <- client.inn do %>
+        <%# <%= client.ip_address %>
+        <%# <%= inn.number %>
+
+    <%# <% end %>
+    <tr>
+      <td><%= client.id %></td>
+      <td><%= client.ip_address %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.admin_client_path(@conn, :show, client) %></span>
+        <span><%= link "Edit", to: Routes.admin_client_path(@conn, :edit, client) %></span>
+        <span><%= link "Delete", to: Routes.admin_client_path(@conn, :delete, client), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+

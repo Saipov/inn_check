@@ -1,0 +1,18 @@
+<h1>Show Client</h1>
+
+<ul>
+
+  <li>
+    <strong>Ip address:</strong>
+    <%= @client.ip_address %>
+  </li>
+
+  <li>
+    <strong>Is banned:</strong>
+    <%= @client.is_banned %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.admin_client_path(@conn, :edit, @client) %></span>
+<span><%= link "Back", to: Routes.admin_client_path(@conn, :index) %></span>
